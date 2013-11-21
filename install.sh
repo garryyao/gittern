@@ -2,10 +2,10 @@
 
 # Install all git extensions to bash bin path.
 
-BIN=${1:-"/usr/local/bin"}
+BIN=${1:-"/bin"}
 PWD=`pwd`
 for i in git-*
 do
-	sudo ln -sf $PWD/$i $BIN/${i%.sh}
+ 	ln -sf "$PWD/$i" "$BIN/${i%.sh}"
 done
 exit 0;
