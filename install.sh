@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Install all git extensions to bash bin path.
+PATH=$PATH;/bin;
 
 BIN=${1:-"/bin"}
 PWD=`pwd`
