@@ -1,7 +1,7 @@
 # Instrumental Git with Gittern
 Gittern is simply a bunch of BASH scripts as Git extensions/sub commands, featuring to reduce daily routines verbosity.
 
-## Install
+## Install (Please run with git bash shell)
 
 ```bash
 git clone git@github.com:garryyao/gittern.git
