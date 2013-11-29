@@ -6,8 +6,13 @@ Gittern is simply a bunch of BASH scripts as Git extensions/sub commands, featur
 ```bash
 git clone git@github.com:garryyao/gittern.git
 cd gittern
-chmod +x install.sh && ./install.sh
+chmod +x install.sh && (sudo) ./install.sh
 ```
+
+# Compatibility Test
+ * OSX 10.6 - tested
+ * Msysgit - tested
+
 
 ## List of available commands
 
