@@ -32,7 +32,7 @@ then
 	help
 fi
 
-find . -type d -iname ".git" | grep -e "$PATTERN" | while read dir; do
+find -L . -type d -iname ".git" | grep -e "$PATTERN" | while read dir; do
 	repo=${dir%.git}
 	line
 	echo "* `git_cmd $repo "repo-name"`"
