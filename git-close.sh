@@ -9,6 +9,10 @@ REMOTE=`git tr $BRANCH`
 if [ "$CURR" == "$BRANCH" ]
 then
 	git checkout -m develop >/dev/null
+	if [ $? -ne 0 ]
+	then
+		git checkout -m master >/dev/null
+	fi
 fi
 
 # Delete the local branch.
