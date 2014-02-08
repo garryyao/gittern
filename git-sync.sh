@@ -6,6 +6,7 @@ CURR=`git br`
 BRANCH=${1:-$CURR}
 
 git fetch --all
+git remote prune origin
 
 CURR=`git br`
 BRANCH=${1:-$CURR}
