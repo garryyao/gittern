@@ -12,31 +12,24 @@ function help
 	echo 'e.g. git each "jquery-" checkout develop'
 }
 
-function git_cmd
-{
-	repo=$1
-	shift
-	cmd=$@
-	git --git-dir=$repo/.git --work-tree=$PWD/$repo $cmd
-}
-
 # regexp pattern that matches against directory name.
 PATTERN=$1
 if [[ -z $PATTERN ]]; then help; fi
 
 shift
-# The rest of params as git command.
-REST=$@
-if [ -z "$REST" ]
-then
-	help
-fi
+# The CMD of params as git command.
+CMD=$@
+if [ -z "$CMD" ]; then help; exit 1; fi
 
+cwd=$(pwd)
 find -L . -type d -iname ".git" | grep -e "$PATTERN" | while read dir; do
 	repo=${dir%.git}
+	# step into the sub module as working dir.
+	cd $cwd/$repo
 	line
-	echo "* `git_cmd $repo "repo-name"`"
-	git_cmd $repo $REST
-
+	echo "* `git repo-name`"
+	$CMD
 done
+# Restored current dir.
+cd $cwd
 exit 0;
