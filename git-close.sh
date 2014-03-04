@@ -16,8 +16,7 @@ then
 fi
 
 # Delete the local branch.
-git branch -D $BRANCH || { echo "fails to delete the local branch"; }
-
+git branch -D $BRANCH || { echo "fails to delete the local branch"; } 
 # Check if remote branch exists.
 if [ -z $REMOTE ]
 then
