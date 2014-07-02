@@ -1,6 +1,6 @@
 {
   "name": "gittern",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "instrumental git extensions with shelljs",
   "main": "index.js",
   "bin": {
