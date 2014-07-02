@@ -1,18 +1,15 @@
 # Instrumental Git with Gittern
 Gittern is simply a bunch of BASH scripts as Git extensions/sub commands, featuring to reduce daily routines verbosity.
 
-## Install (Please run with git bash shell)
+## Install from NPM
 
 ```bash
-git clone git@github.com:garryyao/gittern.git
-cd gittern
-chmod +x install.sh && (sudo) ./install.sh
+sudo npm install -g gittern
 ```
 
 # Compatibility Test
  * OSX 10.6 - tested
  * Msysgit - tested
-
 
 ## List of available commands
 

@@ -12,7 +12,7 @@ function help
 	echo 'e.g. git each "jquery-" checkout develop'
 }
 
-# regexp pattern that matches against directory name.
+# regexp pattern that matches against directory repo_name.
 PATTERN=$1
 if [[ -z $PATTERN ]]; then help; fi
 
