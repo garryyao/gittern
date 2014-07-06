@@ -7,7 +7,8 @@
     "git-br": "./git-br.js",
     "git-tr": "./git-tr.js",
     "git-sync": "./git-sync.js",
-    "git-url": "./git-url.js"
+    "git-url": "./git-url.js",
+    "git-align": "./git-align.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
