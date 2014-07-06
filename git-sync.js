@@ -5,10 +5,11 @@ var util = require('util');
 // Update the specified local branch with latest upstream changes, attempt to rebase local changes
 var curr_branch = exec('git br', {silent: 1}).output.trim();
 var branch = process.argv[2] || curr_branch;
+var remote = exec('git remote', {silent: 1}).output.trim();
 
 // fetch all remote changes
-exec('git fetch --all');
-exec('git remote prune origin');
+exec('git fetch ' + remote);
+exec('git remote prune ' + remote);
 
 var tracking = exec('git tr ' + branch, {silent: 1}).output.trim();
 if (!tracking) {
@@ -21,7 +22,7 @@ if (curr_branch !== branch)
 	exec('git checkout ' + branch);
 
 // try first to fast forward.
-if (exec('git merge $TRACKING --ff-only').code !== 0) {
+if (exec('git merge ' + tracking + ' --ff-only').code !== 0) {
 	echo("Unable to fast-forward local branch, trying to rebase...");
 
 	// resort to rebase if fast forward fails.
