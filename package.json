@@ -3,17 +3,17 @@
   "version": "0.0.4",
   "description": "instrumental git extensions with shelljs",
   "bin": {
-    "git-br": "./git-br.js",
-    "git-tr": "./git-tr.js",
-    "git-origin": "./git-origin.js",
-    "git-repo": "./git-repo.js",
-    "git-sync": "./git-sync.js",
-    "git-url": "./git-url.js",
     "git-align": "./git-align.js",
+    "git-br": "./git-br.js",
     "git-close": "./git-close.js",
     "git-each": "./git-each.js",
+    "git-origin": "./git-origin.js",
     "git-pub": "./git-pub.js",
-    "git-rename": "./git-rename.js"
+    "git-rename": "./git-rename.js",
+    "git-repo": "./git-repo.js",
+    "git-sync": "./git-sync.js",
+    "git-tr": "./git-tr.js",
+    "git-url": "./git-url.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -36,7 +36,6 @@
   "homepage": "https://github.com/garryyao/gittern",
   "dependencies": {
     "shelljs": "^0.3.0",
-    "string": "^1.9.0",
     "bash-color": "0.0.3",
     "underscore.string": "^2.3.3"
   }
