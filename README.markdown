@@ -1,5 +1,6 @@
 # Instrumental Git with Gittern
-Gittern is simply a bunch of BASH scripts as Git extensions/sub commands, featuring to reduce daily routines verbosity.
+Gittern is bundle of Git extensions scripts written in [shelljs](https://github.com/arturadib/shelljs),
+featuring to reduce daily routines verbosity when working with Git.
 
 ## Install from NPM
 
@@ -21,7 +22,7 @@ Print the current working branch name.
 
 Print the remote tracking branch of the current/specified branch.
 
-### git repo-name
+### git repo
 
 Figure out the Git repository name of the current working copy.
 
@@ -37,9 +38,9 @@ Discard any local changes made to align with the HEAD of remote tracking branch.
 
 Remove both the local and the remote tracking branch.
 
-### git each [regexp] [command]
+### git each [pattern] [command]
 
-Execute the specified command, in each of git repo (sub) directory that are matched by the pattern.
+Execute the command, in each of git repo (sub) directory that are matched by the specified pattern.
 
 ### git submodule-setup
 
@@ -47,7 +48,7 @@ Automatically add all sub modules from your .gitmodules file in the working dire
 
 ### git url [ref]
 
-Generate an URL of the Git web interface that points to the specified REF.
+Generate an URL of the Git web interface that points to the specified git ref/tag/branch.
 
 
 
