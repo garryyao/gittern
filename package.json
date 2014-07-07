@@ -8,7 +8,8 @@
     "git-tr": "./git-tr.js",
     "git-sync": "./git-sync.js",
     "git-url": "./git-url.js",
-    "git-align": "./git-align.js"
+    "git-align": "./git-align.js",
+    "git-close": "./git-close.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
