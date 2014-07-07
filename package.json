@@ -11,7 +11,8 @@
     "git-url": "./git-url.js",
     "git-align": "./git-align.js",
     "git-close": "./git-close.js",
-    "git-each": "./git-each.js"
+    "git-each": "./git-each.js",
+    "git-pub": "./git-pub.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

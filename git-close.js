@@ -12,7 +12,7 @@ if (curr_branch === branch) {
 	exec('git checkout -');
 }
 
-if(exec('git branch -D ' + branch}).code){
+if(exec('git branch -D ' + branch).code){
 	echo('fails to delete branch: ' + branch);
 }
 
