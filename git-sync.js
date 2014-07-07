@@ -5,7 +5,7 @@ var util = require('util');
 // Update the specified local branch with latest upstream changes, attempt to rebase local changes
 var curr_branch = exec('git br', {silent: 1}).output.trim();
 var branch = process.argv[2] || curr_branch;
-var remote = exec('git remote', {silent: 1}).output.trim();
+var remote = exec('git origin', {silent: 1}).output.trim();
 
 // fetch all remote changes
 exec('git fetch ' + remote);

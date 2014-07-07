@@ -5,14 +5,15 @@
   "bin": {
     "git-br": "./git-br.js",
     "git-tr": "./git-tr.js",
-    "git-remote": "./git-remote.js",
+    "git-origin": "./git-origin.js",
     "git-repo": "./git-repo.js",
     "git-sync": "./git-sync.js",
     "git-url": "./git-url.js",
     "git-align": "./git-align.js",
     "git-close": "./git-close.js",
     "git-each": "./git-each.js",
-    "git-pub": "./git-pub.js"
+    "git-pub": "./git-pub.js",
+    "git-rename": "./git-rename.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
