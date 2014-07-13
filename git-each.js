@@ -2,8 +2,6 @@
 require('shelljs/global');
 
 // Issue arbitrary git command for each of the sub modules.
-
-var fs = require('fs');
 var path = require('path');
 var _ = require('underscore.string');
 var color = require('bash-color');
@@ -37,7 +35,7 @@ grep(pattern, TMP).trim().split('\n').forEach(function(file) {
 
 	// check whether this is one directory within one of the already walked throughs.
 	var isSub = dirs.some(function(dir) {
-		return cwd.indexOf(dir) != -1;
+		return cwd.indexOf(dir) !== -1;
 	});
 
 	// avoid walking into sub directories.

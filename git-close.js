@@ -20,7 +20,7 @@ if(!tracking){
 	echo('remote tracking branch not found');
 }
 else {
-	if(exec('git push origin :'+ branch).code) {
+	if(exec('git push origin :' + branch).code) {
 		echo('fails to delete remote branch:' + branch);
 	}
 }

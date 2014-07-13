@@ -18,8 +18,9 @@ if (!tracking) {
 }
 
 // checkout to the target branch
-if (curr_branch !== branch)
+if (curr_branch !== branch){
 	exec('git checkout ' + branch);
+}
 
 // try first to fast forward.
 if (exec('git merge ' + tracking + ' --ff-only').code !== 0) {
@@ -33,5 +34,6 @@ if (exec('git merge ' + tracking + ' --ff-only').code !== 0) {
 }
 
 // restore the original branch
-if (curr_branch !== branch)
+if (curr_branch !== branch){
 	exec('git checkout -');
+}

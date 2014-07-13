@@ -1,0 +1,13 @@
+{
+    "globals": {
+        "exec": true,
+        "echo": true,
+        "exit": true,
+        "cd": true,
+        "grep": true,
+        "rm": true
+    },
+    "rules" : {
+      "eol-last": 0
+    }
+}
