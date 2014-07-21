@@ -9,6 +9,7 @@ var ret = exec('git rev-parse --abbrev-ref --symbolic-full-name ' + branch + '@{
 });
 // no tracking branch on remote
 if (ret.code) {
+  // use the first remote listed
   echo(exec('git remote', {
     silent: 1
   }).output.split('\n')[0]);
