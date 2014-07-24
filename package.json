@@ -1,6 +1,6 @@
 {
   "name": "gittern",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "instrumental git extensions with shelljs",
   "bin": {
     "git-align": "./git-align.js",
