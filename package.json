@@ -13,7 +13,8 @@
     "git-repo": "./git-repo.js",
     "git-sync": "./git-sync.js",
     "git-tr": "./git-tr.js",
-    "git-url": "./git-url.js"
+    "git-url": "./git-url.js",
+    "git-rolltag": "./git-rolltag.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

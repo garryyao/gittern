@@ -50,6 +50,17 @@ Automatically add all sub modules from your .gitmodules file in the working dire
 
 Generate an URL of the Git web interface that points to the specified git ref/tag/branch.
 
+### git rolltag [ref]
+
+This command is to navigate to the next sequential tag.
+
+If the TIP of your current index reflects a tag name ends up with number, this command is to checkout the
+next tag name in sequential, say you're now on, e.g. `yesterday(1)` and has another tag called `today(2)`, this
+command will checkout `today(2)` for you, and the next call will be expecting something like `tomorrow(3)` or
+`whatever-3` basically any tag ends up with three.
+
+It is to stop at the end of sequence if there are not more tags available.
+
 
 
 
