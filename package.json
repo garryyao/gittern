@@ -38,6 +38,7 @@
   "dependencies": {
     "shelljs": "^0.3.0",
     "bash-color": "0.0.3",
-    "underscore.string": "^2.3.3"
+    "underscore.string": "^2.3.3",
+    "commander": "^2.3.0"
   }
 }
