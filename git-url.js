@@ -8,7 +8,7 @@ var cli = require('commander');
 
 cli
   .description('create specific type of git web URL')
-  .usage('[options] (<file_path> [line_number]) | (<ref>)')
+  .usage('[options] (<file_path> [line_number]) | (<ref>) [remote]')
   .option('-c, --clipboard', 'Send the generated URL to clipboard')
   .parse(process.argv);
 
@@ -21,22 +21,25 @@ var branch;
 var line;
 var url;
 
-if (arg1) {
+if (arg1 && fs.exists(arg1)) {
   fstate = fs.lstatSync(arg1);
 }
 
-// remote infos
-var origin = exec('git origin', {silent: 1}).output.trim();
-var remote = exec('git remote show -n ' + origin, { silent: 1 }).output;
-var endpoint = remote.match(/(:?Fetch URL:)(.+)/)[2].trim();
+var endpoint, origin, remote;
+
+origin = cli.args[1] || exec('git origin', {silent: 1}).output.trim();
+remote = exec('git remote show -n ' + origin, { silent: 1 }).output;
+endpoint = remote.match(/(:?Fetch URL:)(.+)/)[2].trim();
+
+
 var repo, user, project;
 var match;
 var ref;
 
 // base href
 var base = {
-  'github': 'https://github.com/',
-  'stash': 'https://stash.englishtown.com/'
+  'github': 'https://github.com',
+  'stash': 'https://stash.englishtown.com'
 };
 
 // which type of git repository?
@@ -53,6 +56,7 @@ else if (type === 'stash') {
   repo = match[2];
   url = util.format('projects/%s/repos/%s', project, repo);
 }
+
 
 // create link to the file (line)
 if (fstate && (fstate.isFile() || fstate.isDirectory())) {
@@ -92,7 +96,7 @@ if (!url) {
   exit(1);
 }
 
-url = base[type] + url;
+url = path.join(base[type],path.normalize(url));
 // where to put the created url
 if (cli.clipboard) {
   // TODO: cross-platform clipboard
