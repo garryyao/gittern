@@ -14,7 +14,10 @@
     "git-sync": "./git-sync.js",
     "git-tr": "./git-tr.js",
     "git-url": "./git-url.js",
-    "git-rolltag": "./git-rolltag.js"
+    "git-rolltag": "./git-rolltag.js",
+    "git-pick": "./git-pick.js",
+    "git-cherries": "./git-cherries.js",
+    "git-find": "./git-find.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +25,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/garryyao/gittern.git"
+  },
+  "engines": {
+    "node": ">=4"
   },
   "keywords": [
     "git",
@@ -36,9 +42,10 @@
   },
   "homepage": "https://github.com/garryyao/gittern",
   "dependencies": {
-    "shelljs": "^0.3.0",
     "bash-color": "0.0.3",
-    "underscore.string": "^2.3.3",
-    "commander": "^2.3.0"
+    "commander": "^2.3.0",
+    "optimist": "^0.6.1",
+    "shelljs": "^0.3.0",
+    "underscore.string": "^2.3.3"
   }
 }
