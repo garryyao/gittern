@@ -3,6 +3,7 @@
 require('shelljs/global');
 var util = require('util');
 var fs = require('fs');
+var open = require('open');
 var path = require('path');
 var cli = require('commander');
 
@@ -10,6 +11,8 @@ cli
   .description('create specific type of git web URL')
   .usage('[options] (<file_path> [line_number]) | (<ref>) [remote]')
   .option('-c, --clipboard', 'Send the generated URL to clipboard')
+  .option('-o, --open', 'Open the URL in browser')
+  .option('-b, --repo', 'Generate only the repository URL')
   .parse(process.argv);
 
 var arg1 = cli.args[0];
@@ -21,7 +24,7 @@ var branch;
 var line;
 var url;
 
-if (arg1 && fs.exists(arg1)) {
+if (arg1 && fs.existsSync(arg1)) {
   fstate = fs.lstatSync(arg1);
 }
 
@@ -33,33 +36,40 @@ endpoint = remote.match(/(:?Fetch URL:)(.+)/)[2].trim();
 
 
 var repo, user, project;
-var match;
 var ref;
-
-// base href
-var base = {
-  'github': 'https://github.com',
-  'stash': 'https://stash.englishtown.com'
-};
+var baseUrl, type;
 
 // which type of git repository?
-var type = /github\.com/.exec(endpoint) ? 'github' : /stash\.englishtown\.com/.exec(endpoint) ? 'stash' : 'unsupported';
+var host = endpoint.match(/(github).*?\.com/);
+if(!host) {
+  host = endpoint.match(/(stash).*?\.com/);
+}
+
+if(host) {
+  baseUrl = 'https://' + host[0];
+  type = host[1];
+}
 
 if (type === 'github') {
-  match = endpoint.match(/([^:.\/]+?)\/([^:.\/]+?)\.git/);
-  user = match[2];
-  repo = match[1];
+  host = endpoint.match(/([^:.\/]+?)\/([^:.\/]+?)\.git/);
+  user = host[2];
+  repo = host[1];
 }
 else if (type === 'stash') {
-  match = endpoint.match(/([^:.\/]+?)\/([^:.\/]+?)\.git/);
-  project = match[1];
-  repo = match[2];
+  host = endpoint.match(/([^:.\/]+?)\/([^:.\/]+?)\.git/);
+  project = host[1];
+  repo = host[2];
   url = util.format('projects/%s/repos/%s', project, repo);
 }
 
-
+// create link to the repo
+if (cli.repo) {
+  url = type === 'github' ?
+        util.format('%s/%s', repo, user) :
+        util.format('projects/%s/repos/%s/', project, repo);
+}
 // create link to the file (line)
-if (fstate && (fstate.isFile() || fstate.isDirectory())) {
+else if (fstate && (fstate.isFile() || fstate.isDirectory())) {
   file = arg1;
   line = cli.args[1];
   branch = exec('git br', { silent: 1 }).output.trim();
@@ -96,7 +106,12 @@ if (!url) {
   exit(1);
 }
 
-url = path.join(base[type],path.normalize(url));
+url = [baseUrl, path.normalize(url)].join('/');
+
+// open in browser
+if(cli.open) {
+  open(url);
+}
 // where to put the created url
 if (cli.clipboard) {
   // TODO: cross-platform clipboard
